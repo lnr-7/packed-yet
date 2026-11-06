@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Packed yet?</title>
+    <meta
+      name="description"
+      content="An offline packing list. Reuse your last trip's list and see what is still not in the bag before you leave."
+    />
+    <meta name="theme-color" content="#0E4F4B" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#/">Packed yet?</a>
+    </header>
+
+    <main id="app" tabindex="-1"></main>
+
+    <dialog id="trip-dialog" class="sheet" aria-labelledby="trip-dialog-title">
+      <form id="trip-form" method="dialog" novalidate>
+        <h2 id="trip-dialog-title">New trip</h2>
+
+        <div class="field">
+          <label for="trip-name">Trip name</label>
+          <input id="trip-name" name="name" type="text" maxlength="80" autocomplete="off" placeholder="Goa with friends" />
+          <p class="field-error" id="trip-name-error" hidden>Give the trip a name.</p>
+        </div>
+
+        <div class="field">
+          <label for="trip-leave">When do you leave?</label>
+          <input id="trip-leave" name="leaveAt" type="datetime-local" />
+          <p class="field-hint">Leave this empty if you don't know yet.</p>
+        </div>
+
+        <div class="field" id="trip-source-field">
+          <label for="trip-source">Start with</label>
+          <select id="trip-source" name="source"></select>
+        </div>
+
+        <div class="sheet-actions">
+          <button type="button" class="btn btn-quiet" data-close>Cancel</button>
+          <button type="submit" class="btn btn-main" id="trip-submit">Create trip</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="check-dialog" class="sheet" aria-labelledby="check-dialog-title">
+      <h2 id="check-dialog-title">Before you leave</h2>
+      <div id="check-body"></div>
+      <div class="sheet-actions">
+        <button type="button" class="btn btn-main" data-close>Close</button>
+      </div>
+    </dialog>
+
+    <dialog id="confirm-dialog" class="sheet" aria-labelledby="confirm-title">
+      <h2 id="confirm-title"></h2>
+      <p id="confirm-text"></p>
+      <div class="sheet-actions">
+        <button type="button" class="btn btn-quiet" data-close>Cancel</button>
+        <button type="button" class="btn btn-stop" id="confirm-ok"></button>
+      </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <noscript>
+      <p class="noscript">Packed yet? needs JavaScript to keep your list. Turn it on and reload this page.</p>
+    </noscript>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

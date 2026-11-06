@@ -1,0 +1,12 @@
+{
+  "name": "packed-yet",
+  "version": "1.0.0",
+  "description": "An offline packing list that reuses your last trip and reminds you what is still not in the bag.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8080"
+  }
+}
